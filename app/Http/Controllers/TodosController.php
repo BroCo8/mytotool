@@ -10,7 +10,7 @@ class TodosController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      * 
@@ -26,7 +26,7 @@ class TodosController extends Controller
      */
     public function create()
     {
-        //
+        return view('add_todo');
     }
 
     /**
