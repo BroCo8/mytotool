@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TodosController extends Controller
 {
@@ -34,7 +36,25 @@ class TodosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'completed' => 'nullable',
+        ]);
+
+        $todo = new Todo;
+        $todo->title = $request->input('title');
+        $todo->description = $request->input('description');
+
+        if($request->has('completed')){
+            $todo->completed = true;
+        }
+
+        $todo->user_id = Auth::user()->id;
+
+        $todo->save();
+
+        return back()->with('success', 'Item created successfully');
     }
 
     /**
