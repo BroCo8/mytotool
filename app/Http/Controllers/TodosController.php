@@ -64,6 +64,9 @@ class TodosController extends Controller
     public function show(string $id)
     {
         $todo = Todo::where('id', $id)->where('user_id', Auth::user()->id)->first();
+        if(!$todo){
+            abort(404);
+        }
         return view('delete_todo', compact('todo'));
     }
 
@@ -73,6 +76,9 @@ class TodosController extends Controller
     public function edit(string $id)
     {
         $todo = Todo::where('id', $id)->where('user_id', Auth::user()->id)->first();
+        if(!$todo){
+            abort(404);
+        }
         return view('edit_todo', compact('todo'));
     }
 
@@ -110,6 +116,6 @@ class TodosController extends Controller
         $todo = Todo::where('id', $id)->where('user_id', Auth::user()->id)->first();
         $todo->delete();
 
-        return redirect()->route('todo.index')->with('Effectué', 'Tâche supprimié avec succès');
+        return redirect()->route('todo.index')->with('Effectué', 'Tâche supprimé avec succès');
     }
 }
