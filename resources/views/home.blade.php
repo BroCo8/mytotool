@@ -18,6 +18,13 @@
                         </div>
                     @endif
 
+                    @if(session()->has('success'))
+                        <div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert">x</button>
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
+
                     <table class="table table-hover table-borderless">
                         <thead>
                             <th scope="col">Tâche</th>
@@ -34,7 +41,7 @@
 
                                 <td>
                                     <a href="{{ route('todo.edit', $todo->id) }}" class="btn btn-sm btn-outline-success"><i class="fa fa-pencil-square-o"></i></a>
-                                    <a href="" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></a>
+                                    <a href="{{ route('todo.show', $todo->id) }}" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             @empty

@@ -63,7 +63,8 @@ class TodosController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $todo = Todo::where('id', $id)->where('user_id', Auth::user()->id)->first();
+        return view('delete_todo', compact('todo'));
     }
 
     /**
@@ -86,7 +87,7 @@ class TodosController extends Controller
             'completed' => 'nullable',
         ]);
 
-        $todo = Todo::find($id);
+        $todo = Todo::where('id', $id)->where('user_id', Auth::user()->id)->first();
         $todo->title = $request->input('title');
         $todo->description = $request->input('description');
 
@@ -106,6 +107,9 @@ class TodosController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $todo = Todo::where('id', $id)->where('user_id', Auth::user()->id)->first();
+        $todo->delete();
+
+        return redirect()->route('todo.index')->with('Effectué', 'Tâche supprimié avec succès');
     }
 }
