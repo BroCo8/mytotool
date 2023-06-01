@@ -24,13 +24,25 @@
                             <th scope="col"></th>
                         </thead>
                         <tbody>
+                            @forelse ($todos as $todo)
                             <tr>
-                                <td>dfsdfdqsfdqsfds</td>
+                                @if ($todo->completed)
+                                    <td><a href="{{ route('todo.edit', $todo->id) }}" style="color: black"><s>{{ $todo->title }}</s></a></td>
+                                @else
+                                    <td><a href="{{ route('todo.edit', $todo->id) }}">{{ $todo->title }}</a></td>
+                                @endif
+
                                 <td>
-                                    <a href="" class="btn btn-sm btn-outline-success">Modifier</a>
-                                    <a href="" class="btn btn-sm btn-outline-danger">Supprimer</a>
+                                    <a href="{{ route('todo.edit', $todo->id) }}" class="btn btn-sm btn-outline-success"><i class="fa fa-pencil-square-o"></i></a>
+                                    <a href="" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
+                            @empty
+                            <tr>
+                                <td>Aucune tâche</td>
+                            </tr>
+                            @endforelse
+                            
                         </tbody>
                     </table>
                 </div>
