@@ -34,7 +34,7 @@
                             @forelse ($todos as $todo)
                             <tr>
                                 @if ($todo->completed)
-                                    <td><a href="{{ route('todo.edit', $todo->id) }}" style="color: black"><s>{{ $todo->title }}</s></a></td>
+                                    <td><a href="{{ route('todo.edit', $todo->id) }}" style="color: #00b000"><s>{{ $todo->title }}  <i class="fa fa-solid fa-check"></i></s></a></td>
                                 @else
                                     <td><a href="{{ route('todo.edit', $todo->id) }}">{{ $todo->title }}</a></td>
                                 @endif
