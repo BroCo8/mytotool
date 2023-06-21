@@ -25,7 +25,9 @@
 
                     @if(session()->has('success'))
                         <div class="alert alert-success">
-                            <button type="button" class="close" data-dismiss="alert">x</button>
+                        <button type="button" class="close" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
                             {{ session()->get('success') }}
                         </div>
                     @endif
@@ -68,7 +70,7 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col-md-8 text-center w-100">
                                 <button type="submit" class="btn btn-primary">
                                     Ajouter
                                 </button>

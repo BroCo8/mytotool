@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Tableau de bord') }}</div>
 
                 <h5 class="card-header">
                     <a href="{{ route('todo.create') }}" class="btn btn-sm btn-outline-primary">Ajouter une tâche</a>

@@ -30,18 +30,18 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-12">
                                 <h4 class="text-center">
-                                    Voulez vous vraiment supprimer {{ $todo->delete }} ?
+                                    Voulez vous vraiment supprimer {{ $todo->title }} ?
                                 </h4>
                             </div>
                         </div>
                        
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col-md-8 text-center w-100">
                                 <button type="submit" class="btn btn-danger">
                                     OUI
                                 </button>
-                                <a href="{{ route('todo.index') }}" class="btn btn-info">NON</a>
+                                <a href="{{ route('todo.index') }}" class="btn btn-dark">NON</a>
                             </div>
                         </div>
                     </form>
